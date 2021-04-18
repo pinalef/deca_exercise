@@ -7,29 +7,77 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
   <div id="app">
-      <v-container class="ma-0 pa-0" fluid>
+    <v-app>
+
+      <v-container class="ma-0 pa-0 fill-height" fluid>
         <v-row no-gutters>
-          <v-col cols="4" sm="4"
-          >
+
+          <v-col  sm="12" md="4">
+            <v-container >
+              <v-row no-gutters>
+                <v-col cols="12" sm="4">
+                 <span>
+                  <v-img src="./assets/img/logo-login-1.svg" max-height="250"></v-img>
+                  <p class="font-weight-medium">
+                    Ingresa a tu cuenta
+                  </p>
+                  <template>
+                    <v-form
+                      ref="form"
+                      lazy-validation
+                    >
+                      <v-text-field
+                        label="Name"
+                        required
+                        class="my-input"
+                      ></v-text-field>
+                  
+                      <v-text-field
+                        label="E-mail"
+                        required
+                      ></v-text-field>
+                      <v-text-field
+                      label="Text field"
+                      solo
+                      class="my-input"
+                    ></v-text-field>   
+                      <v-btn
+            
+                        color="success"
+                        class="mr-4"
+                        @click="validate"
+                      >
+                        Validate
+                      </v-btn>
+                  
+                
+                  
+                      <v-btn
+                        color="warning"
+                      >
+                        Reset Validation
+                      </v-btn>
+                    </v-form>
+                  </template>
+                 </span>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-col>
-          <v-col cols="8" 
-          >
-          <v-img
-          lazy-src="https://picsum.photos/id/11/10/6"
-          max-height="150"
-          max-width="250"
-          src="https://picsum.photos/id/11/500/300"
-        ></v-img>
+
+          <v-col md="8" class="d-none d-md-flex">
+            <v-img src="./assets/img/Illustration-login.png" max-height="250" contain class="bg-blue"></v-img>
           </v-col>
+          
         </v-row>
       </v-container>
 
-    
-    
+    </v-app>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -38,6 +86,16 @@
     new Vue({
       el: '#app',
       vuetify: new Vuetify(),
+      data() {
+        return {
+          
+        }
+      },
+      methods: {
+        validate: function (){
+          
+        }
+      },
     })
   </script>
 </body>
