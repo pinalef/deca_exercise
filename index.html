@@ -4,99 +4,82 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
+  <!-- Load required Bootstrap and BootstrapVue CSS -->
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Document</title>
 </head>
 <body>
   <div id="app">
-    <v-app>
 
-      <v-container class="ma-0 pa-0 fill-height" fluid>
-        <v-row no-gutters>
+    <b-container fluid>
+      <b-row>
+        <b-col sm="12" md="4">
+          <b-container>
+     
+            <b-img src="./assets/img/logo-login-1.svg" fluid alt="Responsive image"></b-img>
+            <h2>Ingresa a tu cuenta</h2>
 
-          <v-col  sm="12" md="4">
-            <v-container >
-              <v-row no-gutters>
-                <v-col cols="12" sm="4">
-                 <span>
-                  <v-img src="./assets/img/logo-login-1.svg" max-height="250"></v-img>
-                  <p class="font-weight-medium">
-                    Ingresa a tu cuenta
-                  </p>
-                  <template>
-                    <v-form
-                      ref="form"
-                      lazy-validation
-                    >
-                      <v-text-field
-                        label="Name"
-                        required
-                        class="my-input"
-                      ></v-text-field>
-                  
-                      <v-text-field
-                        label="E-mail"
-                        required
-                      ></v-text-field>
-                      <v-text-field
-                      label="Text field"
-                      solo
-                      class="my-input"
-                    ></v-text-field>   
-                      <v-btn
-            
-                        color="success"
-                        class="mr-4"
-                        @click="validate"
-                      >
-                        Validate
-                      </v-btn>
-                  
-                
-                  
-                      <v-btn
-                        color="warning"
-                      >
-                        Reset Validation
-                      </v-btn>
-                    </v-form>
-                  </template>
-                 </span>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-col>
-
-          <v-col md="8" class="d-none d-md-flex">
-            <v-img src="./assets/img/Illustration-login.png" max-height="250" contain class="bg-blue"></v-img>
-          </v-col>
+              <b-form @submit="onSubmit" >
+                <b-form-group id="input-group-1" label="Correo electrónico" label-for="input-1">
+                <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Ingresa tu correo" required></b-form-input>
+              </b-form-group>
+            </b-form>
+            <b-form @submit.stop.prevent>
+              <label for="text-password" >Constraseña</label>
+              <b-form-input type="password" id="text-password" placeholder="Ingresa tu contraseña"></b-form-input>
+            </b-form>
+           
+            <b-button block  type="submit" variant="primary">Ingresar</b-button>
+            <p>¿No tienes cuenta?</p>
+            <b-button size="sm">Recuperar contraseña</b-button>
+          </b-container>
           
-        </v-row>
-      </v-container>
+        </b-col>
 
-    </v-app>
+        <b-col  md="8" class="d-none d-md-block ">
+          <div>
+            <b-img src="./assets/img/Illustration-login.png" fluid alt="Responsive image"></b-img>
+          </div>
+        </b-col>
+
+      </b-row>
+    </b-container>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      vuetify: new Vuetify(),
-      data() {
-        return {
-          
-        }
+
+
+<!-- Load polyfills to support older browsers -->
+<script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+<script>
+  new Vue({
+  el:"#app",
+  data() {
+    return {
+    form: {
+        email: ''
+      }
+    }
+  },
+  methods: {
+      onSubmit(event) {
+        event.preventDefault()
+        alert(JSON.stringify(this.form))
       },
-      methods: {
-        validate: function (){
-          
-        }
-      },
-    })
-  </script>
+
+    }
+})
+</script>
 </body>
 </html>
