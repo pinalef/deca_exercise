@@ -38,13 +38,18 @@ body{
 
 @media (min-width: 992px) { 
   .padding-left{
-  padding-left: 7.10rem;
+  padding-left: 6.10rem;
   }
   .padding-right{
-      padding-right: 8.11rem;
+      padding-right: 7.11rem;
   }    
 }
 
 .font-bold{
   font-weight: 600;
+}
+
+.font-semibold{
+  font-weight: 500;
+  font-size: 0.8rem;
 }

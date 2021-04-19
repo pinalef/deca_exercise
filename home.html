@@ -99,19 +99,13 @@
           <b-col cols="12" lg="4">
             <p class="font-bold">Seguidores</p>
               <b-list-group>
-                <b-list-group-item v-for="(follower, index) in followers" :key="index" class="d-flex align-items-center p-1 mb-2">
-                  <b-row>
-                    <b-col class="d-flex align-items-center" cols="3">  
-                      <b-avatar :src="follower.img" class=""></b-avatar>
-                    </b-col>
-                    <b-col cols="4">
-                      <span class="mr-auto"> {{follower.name}} </span>
+                <b-list-group-item v-for="(follower, index) in followers" :key="index" class="d-flex align-items-center  mb-2">
+                  <b-avatar :src="follower.img" class=""></b-avatar>
+                    <div class="d-flex flex-column mx-auto">
+                      <span class="mr-auto font-semibold"> {{follower.name}} </span>
                       <small class="text-muted"> {{follower.occupation}} </small>
-                    </b-col>
-                    <b-col class="d-flex align-items-center" cols="5">
-                      <b-button variant="primary">Follow me</b-button>
-                    </b-col>
-                  </b-row>
+                    </div>
+                    <b-button variant="primary" size="sm">Follow me</b-button>
                 </b-list-group-item>
               </b-list-group>
           </b-col>
