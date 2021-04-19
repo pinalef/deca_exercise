@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <!-- Load required Bootstrap and BootstrapVue CSS -->
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app_home">
+    <!-- navbar -->
+    <b-navbar toggleable="lg" type="light" variant="light">
+      <b-container class="padding-left padding-right">
+        <b-navbar-brand href="index.html">
+          <b-img src="./assets/img/navbar-logo.svg" fluid alt="Responsive image"></b-img>
+        </b-navbar-brand>  
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">           
+            <b-nav-item-dropdown right>
+              <!-- Using 'button-content' slot -->
+              <template #button-content>
+                <b-avatar src="./assets/img/Userpic/Woman/1.png" size="2rem"></b-avatar>
+                <strong class="ml-1 mr-2">María</strong>
+              </template>
+              <b-dropdown-item href="#">Profile</b-dropdown-item>
+              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+
+    <b-container class="pb-4 pt-3 padding-left padding-right">
+      <b-row>
+        <b-col  md="5" class="d-flex flex-column">
+          <h1 class="mt-3 font-weight-bolder">Hola María</h1>
+          <p class="mb-auto font-bold mt-2">Revisa el estado actual de todas tus transacciones en tiempo real</p>
+          <div>
+            <b-button class="mt-3" variant="primary"><b-icon class="mr-1" icon="lightning-fill" aria-hidden="true"></b-icon>Revisar estado</b-button>
+          </div>
+        </b-col>
+        <b-col  md="7"class="d-none d-md-block">
+          <div>
+            <b-img center src="./assets/img/hero-img.png"></b-img>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <!-- modal -->
+    <b-modal ref="modal" hide-footer hide-header centered hide-header-close>
+      <b-container class="p-4">
+        <b-card class="text-center" border-variant="white">
+          <b-card-img  src="./assets/Icons/Status/Checked-box.png" alt="Image" style="max-width: 84px;"></b-card-img>
+          <h5>Suscrito exitosamente</h5>
+          <b-card-text class="px-4">
+            Gracias por suscribirte, te estaremos avisando como va todo
+          </b-card-text>
+        </b-card>
+        <b-button variant="secondary" block @click="hideModal">Entendido</b-button>
+      </b-container>
+    </b-modal>
+
+    <section class="bg-gray pt-4">
+      <b-container class=" padding-left padding-right">
+        <b-row>
+          <b-col class="mb-4" cols="12" lg="4">
+            <b-card class="shadow-lg" overlay img-src="./assets/img/Rectangle.png" img-alt="Card Image">
+              <div class="d-flex flex-column">
+                <p class="font-bold pb-auto">Mens's Trainers & Shoes</p>
+                <b-button href="#" variant="primary"><i class="icon-star mr-2"></i>Shop Now</b-button>
+              </div>
+            </b-card>
+          </b-col>
+          <b-col class="mb-4" cols="12" lg="4">
+            <b-card class="p-2 pt-3 " border-variant="white" >
+              <div class="d-flex flex-column" style="height:17rem" >
+                <p class="font-bold">Subscription popup for new members</p>
+                <b-card-text class="text-muted mb-auto small">Here is a text about some useful information that you need.</b-card-text>
+                <div>
+                  <b-form @submit="onSubmit">
+                    <b-form-group id="input-group-1" label-for="input-1">
+                      <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Ingresa tu correo" required></b-form-input>
+                    </b-form-group>
+                    <b-button type="submit" block variant="info">Aceptar</b-button>
+                  </b-form>
+                </div>
+              </div>
+            </b-card>
+          </b-col>
+          <b-col cols="12" lg="4">
+            <p class="font-bold">Seguidores</p>
+              <b-list-group>
+                <b-list-group-item v-for="(follower, index) in followers" :key="index" class="d-flex align-items-center p-1 mb-2">
+                  <b-row>
+                    <b-col class="d-flex align-items-center" cols="3">  
+                      <b-avatar :src="follower.img" class=""></b-avatar>
+                    </b-col>
+                    <b-col cols="4">
+                      <span class="mr-auto"> {{follower.name}} </span>
+                      <small class="text-muted"> {{follower.occupation}} </small>
+                    </b-col>
+                    <b-col class="d-flex align-items-center" cols="5">
+                      <b-button variant="primary">Follow me</b-button>
+                    </b-col>
+                  </b-row>
+                </b-list-group-item>
+              </b-list-group>
+          </b-col>
+        </b-row>
+      </b-container>
+    </section>
+  </div>
+
+<!-- Load polyfills to support older browsers -->
+<script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+<script>
+  new Vue({
+  el:"#app_home",
+  data() {
+    return {
+    form: {
+        email: ''
+    },
+    followers:[
+      {
+        img: './assets/img/Userpic/Woman/1.png',
+        name: 'Nitithorn Prinya',
+        occupation: 'Designer'
+      },
+      {
+        img: './assets/img/Userpic/Woman/1.png',
+        name: 'Jenny Murtaugh',
+        occupation: 'Designer'
+      },
+      {
+        img: './assets/img/Userpic/Woman/1.png',
+        name: 'Faadi Al Rahman',
+        occupation: 'Designer'
+      }
+    ]
+    }
+  },
+  methods: {
+    onSubmit(event) {
+      event.preventDefault();
+      this.$refs["modal"].show();
+    },
+    hideModal() {
+    this.$refs["modal"].hide();
+    }   
+  }
+})
+</script>
+</body>
+</html>

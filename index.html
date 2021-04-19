@@ -14,72 +14,55 @@
 </head>
 <body>
   <div id="app">
-
     <b-container fluid>
       <b-row>
-        <b-col sm="12" md="4">
-          <b-container>
-     
-            <b-img src="./assets/img/logo-login-1.svg" fluid alt="Responsive image"></b-img>
-            <h2>Ingresa a tu cuenta</h2>
-
-              <b-form @submit="onSubmit" >
-                <b-form-group id="input-group-1" label="Correo electrónico" label-for="input-1">
-                <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Ingresa tu correo" required></b-form-input>
+        <b-col sm="12" md="6" lg="4">
+          <b-container class="px-2 px-md-5">
+            <b-img class="d-flex mx-auto py-5 mt-5" src="./assets/img/logo-login-1.svg" fluid alt="Responsive image"></b-img>
+            <p class="my-4 font-bold"> Ingresa a tu cuenta</p>
+            <b-form @submit="onSubmit">
+              <b-form-group id="input-mail" label="Correo electrónico" label-for="mail" class="font-bold small">
+                <b-form-input id="mail" v-model="form.email" type="email" placeholder="Ingresa tu correo" required></b-form-input>
               </b-form-group>
+              <b-form-group id="input-password" label="Constraseña" label-for="password" class="font-bold small">
+                <b-form-input id="password"  type="password" placeholder="Ingresa tu contraseña" required></b-form-input>
+              </b-form-group>
+              <b-button class="my-4" block type="submit" variant="primary">Ingresar</b-button>
             </b-form>
-            <b-form @submit.stop.prevent>
-              <label for="text-password" >Constraseña</label>
-              <b-form-input type="password" id="text-password" placeholder="Ingresa tu contraseña"></b-form-input>
-            </b-form>
-           
-            <b-button block  type="submit" variant="primary">Ingresar</b-button>
-            <p>¿No tienes cuenta?</p>
-            <b-button size="sm">Recuperar contraseña</b-button>
+            <p class="text-center mt-5">¿No tienes cuenta?</p>
+            <b-button class="d-flex mx-auto mb-4" size="sm">Recuperar contraseña</b-button>
           </b-container>
-          
         </b-col>
-
-        <b-col  md="8" class="d-none d-md-block ">
-          <div>
-            <b-img src="./assets/img/Illustration-login.png" fluid alt="Responsive image"></b-img>
-          </div>
-        </b-col>
-
+        <b-col md="6" lg="8" class="d-none d-md-block bg-blue bg-imglogin"></b-col>
       </b-row>
     </b-container>
   </div>
 
+  <!-- Load polyfills to support older browsers -->
+  <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
 
+  <!-- Load Vue followed by BootstrapVue -->
+  <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 
-<!-- Load polyfills to support older browsers -->
-<script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-
-
-<!-- Load Vue followed by BootstrapVue -->
-<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
-<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-
-<!-- Load the following for BootstrapVueIcons support -->
-<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-<script>
-  new Vue({
-  el:"#app",
-  data() {
-    return {
-    form: {
-        email: ''
+  <!-- Load the following for BootstrapVueIcons support -->
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+  <script>
+    new Vue({
+    el:"#app",
+    data() {
+      return {
+      form: {
+          email: ''
+        }
       }
-    }
-  },
-  methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
-
-    }
-})
-</script>
+    },
+    methods: {
+        onSubmit(event) {
+          event.preventDefault();
+        },
+      }
+  })
+  </script>
 </body>
 </html>

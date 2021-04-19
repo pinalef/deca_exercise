@@ -2,5 +2,49 @@ body{
     font-family: 'Inter', sans-serif;
 }
 .bg-blue{
-    background: #E2EFFF;
+    background-color: #E2EFFF;
+    background-image: url("../img/Illustration-login.png") ;
+    height: auto;
+    padding: 5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.bg-gray{
+    background: #F4F6F6;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #193ff7;
+    border-color: #193ff7;
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #051076;
+    border-color: #051076;
+}
+.btn-info {
+    color: #fff;
+    background-color: #29E1C0;
+    border-color: #29E1C0;
+}
+.icon-star{
+    background-image : url(../Icons/Status/Star.png);
+    background-size: cover;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+  }
+
+@media (min-width: 992px) { 
+    .padding-left{
+    padding-left: 7.10rem;
+    }
+    .padding-right{
+        padding-right: 8.11rem;
+    }    
+}
+
+.font-bold{
+    font-weight: 600;
 }
